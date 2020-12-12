@@ -143,6 +143,38 @@ protected override void OnModelCreating(ModelBuilder builder)
 start
 `$ npm start`
 
+##### connect api
+`$ npm istall axios`
+App.tsx
+```
+import axios from 'axios';
+componentDidMount() {
+    axios.get('http://localhost:5000/api/values')
+        .then.setState({
+            values: response.data
+    })
+}
+```
+Startup.cs
+```
+public void ConfiguresServices(IServiceCollection services)
+{
+    services.AddCors(opt =>
+    {
+        opt.AddPolicy("CorsPolicy", policy =>
+        {
+            policy.AllowAnyHeader()
+                .AllowAnyMethod()
+                .WithOrigins("http://localhost:3000");
+        });
+    });
+}
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    app.UseCors("CorsPolicy");
+}
+```
+
 ###### css framework
 [semantic ui react](https://react.semantic-ui.com/)
 `$ npm install semantic-ui-react semantic-ui-css`

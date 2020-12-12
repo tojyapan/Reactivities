@@ -145,6 +145,7 @@ start
 
 ##### connect api
 `$ npm istall axios`
+
 App.tsx
 ```
 import axios from 'axios';
@@ -177,4 +178,6 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 ###### css framework
 [semantic ui react](https://react.semantic-ui.com/)
+
 `$ npm install semantic-ui-react semantic-ui-css`
+

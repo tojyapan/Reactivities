@@ -138,4 +138,11 @@ protected override void OnModelCreating(ModelBuilder builder)
 ```
 `$ dotnet ef migrations add SeedValues -p Persistence/ -s API/`
 
+##### client side
+`$ npx create-react-app client-app --use-npm --template typescript`
+start
+`$ npm start`
 
+###### css framework
+[semantic ui react](https://react.semantic-ui.com/)
+`$ npm install semantic-ui-react semantic-ui-css`

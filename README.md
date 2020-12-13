@@ -181,3 +181,9 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 `$ npm install semantic-ui-react semantic-ui-css`
 
+
+
+###### mediatr
+`MediatR.Extensions.Microsoft.DependencyInjection`
+`latest version`
+`{root}/Application/Application.csproj`

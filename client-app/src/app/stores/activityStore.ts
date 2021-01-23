@@ -1,14 +1,19 @@
-import { observable, action, makeObservable } from 'mobx';
+import { observable, action, makeObservable, computed, makeAutoObservable } from 'mobx';
 import { createContext } from 'react';
 import agent from '../api/agent';
 import { IActivity } from '../models/activity';
 
 class ActivityStore {
+    
     @observable activities: IActivity[] = [];
     @observable selectedActivity: IActivity | undefined;
     @observable loadingInitial = false;
     @observable editMode = false;
     @observable submitting = false;
+
+    @computed get activitiesByDate() {
+        return this.activities.slice().sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+    }
 
     @action loadActivities = async () => {
         this.loadingInitial = true;
@@ -49,7 +54,7 @@ class ActivityStore {
     };
 
     constructor() {
-        makeObservable(this);
+        makeAutoObservable(this);
     }
 }
 

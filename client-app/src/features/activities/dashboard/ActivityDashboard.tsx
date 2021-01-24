@@ -20,7 +20,7 @@ const ActivityDashboard: React.FC = () => {
                 )}
                 {editMode && 
                     <ActivityForm
-                        key={selectedActivity && selectedActivity.id || 0}
+                        key={(selectedActivity && selectedActivity.id) || 0}
                         activity={selectedActivity!}
                     />
                 }

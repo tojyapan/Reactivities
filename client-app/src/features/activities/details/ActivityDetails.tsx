@@ -1,11 +1,24 @@
 import { observer } from 'mobx-react-lite';
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { RouteComponentProps } from 'react-router-dom';
 import { Card, Image, Button } from 'semantic-ui-react';
+import { LoadingComponent } from '../../../app/layout/LoadingComponent';
 import ActivityStore from '../../../app/stores/activityStore';
 
-const ActivityDetails: React.FC = () => {
+interface DetailParams {
+    id: string;
+}
+
+const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({match}) => {
     const activityStore = useContext(ActivityStore);
-    const {activity: activity, openEditForm, cancelSelectedActivity} = activityStore;
+    const {activity: activity, openEditForm, cancelSelectedActivity, loadActivity, loadingInitial} = activityStore;
+
+    useEffect(() => {
+        loadActivity(match.params.id);
+    }, [loadActivity]);
+
+    if (loadingInitial || !activity) return <LoadingComponent content='Loading activity...' />
+
     return (
         <Card fluid>
             <Image src={`/assets/categoryImages/${activity!.category}.jpg`} wrapped ui={false} />
